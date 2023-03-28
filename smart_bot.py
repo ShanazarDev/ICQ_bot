@@ -60,7 +60,7 @@ class Main:
         # avoid duplicate words
         self.SomeWords[:] = np.unique(self.SomeWords)
 
-        if len(self.SomeWords) > 5:
+        if len(self.SomeWords) > 20:
             if event.text not in str(self.nums):
                 bot.send_text(chat_id=event.from_chat, text=random.choice(self.SomeWords))
             else:
