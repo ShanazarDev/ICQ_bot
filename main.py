@@ -12,7 +12,6 @@ class Main:
         self.TOKEN = "PUT THERE YOUR TOKEN FORM METABOT"
         self.bot = Bot(token=self.TOKEN)
         self.chat_nick = "CHAT LINK"
-        self.chatId = "TAKE CHAT IF FROM EVENT AND PUT THERE"
         self.WeekTable = {
             'Monday': ['Ekologiya amaly \t316', 'Diskret matematika leksiya \tMejlisler zaly',
                        'Kodirleme nazaryeti \t342',
@@ -41,8 +40,6 @@ class Main:
 
     # MESSAGE FUNCTION WHEN SOMEBODY REQUEST 1 DAY SCHEDULE
     def message_cb(self, bot, event):
-        ty = event.chat_type
-        if ty == 'group' and event.from_chat == self.chatId:
             if event.text in ['SOME WORDS TO ACTVIE THE BOT']:
                 bot.send_text(chat_id=self.chat_nick, text='PUT THERE YOUR TEXT WHEN SOMEBODY ASK BOT')
 
@@ -104,8 +101,6 @@ class Main:
 
             else:
                 pass
-        else:
-            pass
 
     # FUNCTION WHEN BOT STARTED
     def SayHi(self):
@@ -114,7 +109,6 @@ class Main:
     # SWEAR WORDS FUNCTION WHEN SOME BODY TYPED
     def badWord(self, bot, event):
         # FILTERING WORDS FOR SWEAR WORDS
-        if event.chat_type == 'group' and event.from_chat == self.chatId:
             text = event.text.split()
             print(event)
             self.process.append(text)
@@ -124,13 +118,10 @@ class Main:
                         self.process.clear()
                         bot.send_text(chat_id=self.chat_nick, text=f'{random.choice(self.words)} {event.message_author["firstName"]}')
                         bot.delete_messages(chat_id=self.chat_nick, msg_id=event.msgId)
-        else:
-            pass
     
 
     # SMART BOT FUNCTION CHATING WITH CHAT MEMBERS
     def CleverBot(self, bot, event):
-        if event.chat_type == 'group' and event.from_chat == self.chatId:
             text = event.text
             self.SomeWords.append(text)
 
@@ -157,8 +148,6 @@ class Main:
                     pass
             else:
                 pass
-        else:
-            pass
 
 
     # GLOBAL FUNCTION TO START ALL FUNCTIONS
@@ -166,6 +155,7 @@ class Main:
         self.bot.dispatcher.add_handler(MessageHandler(callback=self.badWord))
         self.bot.dispatcher.add_handler(MessageHandler(callback=self.CleverBot))
         self.bot.dispatcher.add_handler(MessageHandler(callback=self.message_cb))
+
         # KEEP BOT ACTIVE
         self.bot.start_polling()
         self.bot.idle()
