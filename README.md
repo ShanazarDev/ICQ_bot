@@ -1,5 +1,4 @@
-# ICQ_bot
-ICQ bot python. 
+# ICQ simple bot on Python. 
 <h1>
  🤖
 A smart bot that can communicate with chat users and can identify swear words and can remove swear words. 
