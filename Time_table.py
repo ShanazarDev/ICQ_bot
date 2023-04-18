@@ -28,67 +28,81 @@ class Main:
 
     # MESSAGE FUNCTION WHEN SOMEBODY REQUEST 1 DAY SCHEDULE
     def message_cb(self, bot, event):
-        if event.text in ['bot', 'Bot', 'BOT']:
-            bot.send_text(chat_id=self.chat_nick, text='Hi Everybody!')
+        match event.text:
+            case ["bot", "Bot", "BOT"]:
+                bot.send_text(
+                    chat_id=self.chat_nick, text=f'Hi dear user{event.message_author["firstName"]}')
 
-        if int(event.text) == 1:
-            monday = self.WeekTable['Monday']
-            if self.Week % 2 == 0:
+        match int(event.text):
+            case 1:
+                monday = self.WeekTable['Monday']
+                if self.Week % 2 == 0:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{monday[1]} \t\n{monday[3]} \t\n{monday[4]}')
+                else:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{monday[0]} \t\n{monday[2]} \t\n{monday[4]}')
+
+            case 2:
+                tuesday = self.WeekTable['Tuesday']
+                if self.Week % 2 == 0:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{tuesday[0]} \t\n{tuesday[1]} \t\n{tuesday[3]}')
+                else:
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{tuesday[0]} \t\n{tuesday[1]} \t\n{tuesday[2]}')
+
+            case 3:
                 bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{monday[1]} \t\n{monday[3]} \t\n{monday[4]}')
-            else:
-                bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{monday[0]} \t\n{monday[2]} \t\n{monday[4]}')
+                              text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                wednesday = self.WeekTable['Wednesday']
+                bot.send_text(
+                    chat_id=self.chat_nick, text=f'{wednesday[0]} \t\n{wednesday[1]} \t\n{wednesday[2]}')
 
-        elif int(event.text) == 2:
-            tuesday = self.WeekTable['Tuesday']
-            if self.Week % 2 == 0:
-                bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{tuesday[0]} \t\n{tuesday[1]} \t\n{tuesday[3]}')
-            else:
-                bot.send_text(chat_id=self.chat_nick, text=f'{tuesday[0]} \t\n{tuesday[1]} \t\n{tuesday[2]}')
+            case 4:
+                thursday = self.WeekTable['Thursday']
+                if self.Week % 2 == 0:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{thursday[1]} \t\n{thursday[3]} \t\n{thursday[5]}')
+                else:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{thursday[0]} \t\n{thursday[2]} \t\n{thursday[4]}')
 
-        elif int(event.text) == 3:
-            bot.send_text(chat_id=self.chat_nick,
-                            text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-            wednesday = self.WeekTable['Wednesday']
-            bot.send_text(chat_id=self.chat_nick, text=f'{wednesday[0]} \t\n{wednesday[1]} \t\n{wednesday[2]}')
+            case 5:
+                friday = self.WeekTable['Friday']
+                if self.Week % 2 == 0:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{friday[1]} \t\n{friday[2]}\t\n{friday[4]}')
+                else:
+                    bot.send_text(chat_id=self.chat_nick,
+                                  text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                    bot.send_text(
+                        chat_id=self.chat_nick, text=f'{friday[0]} \t\n{friday[2]} \t\n Domoy 2 para ')
 
-        elif int(event.text) == 4:
-            thursday = self.WeekTable['Thursday']
-            if self.Week % 2 == 0:
-                bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{thursday[1]} \t\n{thursday[3]} \t\n{thursday[5]}')
-            else:
-                bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{thursday[0]} \t\n{thursday[2]} \t\n{thursday[4]}')
+            case 6:
+                saturday = self.WeekTable['Saturday']
+                bot.send_text(
+                    chat_id=self.chat_nick, text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
+                bot.send_text(
+                    chat_id=self.chat_nick, text=f'{saturday[0]} \t\n{saturday[1]} \t\n{saturday[2]}')
 
-        elif int(event.text) == 5:
-            friday = self.WeekTable['Friday']
-            if self.Week % 2 == 0:
-                bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{friday[1]} \t\n{friday[2]}\t\n{friday[4]}')
-            else:
-                bot.send_text(chat_id=self.chat_nick,
-                                text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-                bot.send_text(chat_id=self.chat_nick, text=f'{friday[0]} \t\n{friday[2]} \t\n Domoy 2 para ')
+            case _:
+                bot.send_text(
+                    chat_id=self.chat_nick, text=f'Kellan yerindemi senin {event.message_author["firstName"]}')
 
-        elif int(event.text) == 6:
-            saturday = self.WeekTable['Saturday']
-            bot.send_text(chat_id=self.chat_nick, text=f'Sen ucin {event.text} gun raspaisaniye {event.message_author["firstName"]}')
-            bot.send_text(chat_id=self.chat_nick, text=f'{saturday[0]} \t\n{saturday[1]} \t\n{saturday[2]}')
-
-        elif int(event.text) > 6:
-            bot.send_text(chat_id=self.chat_nick, text=f'Kellan yerindemi senin wasyek {event.message_author["firstName"]}')
-
-        else:
-            pass
+        return event.text
 
     # FUNCTION WHEN BOT STARTED
     def SayHi(self):
@@ -96,13 +110,15 @@ class Main:
 
     # GLOBAL FUNCTION TO START ALL FUNCTIONS
     def start(self):
-        self.bot.dispatcher.add_handler(MessageHandler(callback=self.message_cb))
+        self.bot.dispatcher.add_handler(
+            MessageHandler(callback=self.message_cb))
 
         # KEEP BOT ACTIVE
         self.bot.start_polling()
         self.bot.idle()
 
-# RUN 
+
+# RUN
 if __name__ == '__main__':
     t = Main()
     t.SayHi()
