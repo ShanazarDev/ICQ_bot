@@ -14,8 +14,7 @@ class Main:
         self.BadWords = ['type some swear words']
 
         # Some words if somebody says swear words
-        self.words = ['Soyunme bratiska akylly bol', 'Name diyyan sen?? Akylly bol', 'Soyunmek bolanok',
-                      'Bir birini sylammaly oglanlar', 'Bolly eday diyyan sana soyunme dos']
+        self.words = ['some words if somebody type swear word']
 
         self.process = []
         self.nums = list(range(1, 101))
