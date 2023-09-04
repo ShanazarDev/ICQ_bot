@@ -11,13 +11,7 @@ class Main:
         self.bot = Bot(token=self.TOKEN)
 
         # ADD SOME BAD WORDS
-        self.BadWords = ['sikim', 'Sikim', 'cort', 'ijin', 'ejen', 'mal', 'haywan', 'twar', 'sikdir', 'petuh', 'amy',
-                         'ijen', 'musyr', 'Ijin',
-                         'blya', 'Blya', 'Ejenki', 'Ejen', 'sikeyin', 'Sikeyin', 'huylo', 'Huylo', 'Fuck', 'fuck',
-                         'ejenka', 'Ejenka',
-                         'musur', 'Musur', 'musor', 'Musor', 'ami', 'Ijen', 'Sikdir', 'sikme', 'Sikme', 'sikerin',
-                         'Sikerin',
-                         'manzi', 'Manzi', 'wiwi', 'huyyet', 'Huyyet', 'Enen', 'enen', 'sikjek', 'Sikjek', 'amy']
+        self.BadWords = ['type some swear words']
 
         # Some words if somebody says swear words
         self.words = ['Soyunme bratiska akylly bol', 'Name diyyan sen?? Akylly bol', 'Soyunmek bolanok',
